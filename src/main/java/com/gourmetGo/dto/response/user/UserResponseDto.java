@@ -1,22 +1,18 @@
-package com.gourmetGo.dto.response;
+package com.gourmetGo.dto.response.user;
 
 import java.util.UUID;
 
-public class UserResponseDto {
+public abstract class UserResponseDto {
     private UUID id;
     private String username;
     private String password;
-    private String firstname;
-    private String lastname;
     private String email;
     private String phone;
 
-    public UserResponseDto(UUID id, String username, String password, String firstname, String lastname, String email, String phone) {
+    public UserResponseDto(UUID id, String username, String password, String email, String phone) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
         this.email = email;
         this.phone = phone;
     }
@@ -31,14 +27,6 @@ public class UserResponseDto {
 
     public String getPassword() {
         return password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
     }
 
     public String getEmail() {

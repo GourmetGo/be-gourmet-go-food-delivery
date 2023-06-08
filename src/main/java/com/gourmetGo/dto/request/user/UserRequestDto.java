@@ -1,32 +1,27 @@
-package com.gourmetGo.dto.request;
+package com.gourmetGo.dto.request.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class UserRequestDto {
+public abstract class UserRequestDto {
     @NotBlank(message = "Username is required.")
     @Size(min = 3, message = "Username must be at least 3 characters long")
     private String username;
     @NotBlank(message = "Password is required.")
     @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
-    @NotBlank(message = "Firstname is required.")
-    @Size(min = 3, message = "Firstname must be at least 3 characters long")
-    private String firstname;
-    @NotBlank(message = "Lastname is required.")
-    @Size(min = 3, message = "Lastname must be at least 3 characters long")
-    private String lastname;
     @Email
     private String email;
     @NotBlank(message = "Phone is required.")
     private String phone;
 
-    public UserRequestDto(String username, String password, String firstname, String lastname, String email, String phone) {
+    public UserRequestDto() {
+    }
+
+    public UserRequestDto(String username, String password, String email, String phone) {
         this.username = username;
         this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
         this.email = email;
         this.phone = phone;
     }
@@ -37,14 +32,6 @@ public class UserRequestDto {
 
     public String getPassword() {
         return password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
     }
 
     public String getEmail() {

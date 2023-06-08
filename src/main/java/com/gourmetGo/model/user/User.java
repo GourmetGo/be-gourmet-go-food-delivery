@@ -1,35 +1,33 @@
-package com.gourmetGo.model;
+package com.gourmetGo.model.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
-@Entity
-@Table(name = "users")
-public class User {
+@MappedSuperclass
+public abstract class User {
     @Id
     @GeneratedValue
     @UuidGenerator
     private UUID id;
     @Column(unique=true)
+    @NotNull
     private String username;
     private String password;
-    private String firstname;
-    private String lastname;
     private String email;
     private String phone;
 
-    public User(String username, String password, String firstname, String lastname, String email, String phone) {
-        this.username = username;
-        this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.phone = phone;
+    public User() {
     }
 
-    public User() {
+    public User(String username, String password, String email, String phone) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
     }
 
     public UUID getId() {
@@ -54,22 +52,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public String getEmail() {

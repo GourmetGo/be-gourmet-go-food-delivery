@@ -1,9 +1,9 @@
 package com.gourmetGo.controller;
 
-import com.gourmetGo.dto.request.UserRequestDto;
+import com.gourmetGo.dto.request.user.CourierRequestDto;
 import com.gourmetGo.exception.BadRequestException;
-import com.gourmetGo.model.User;
-import com.gourmetGo.service.UserService;
+import com.gourmetGo.model.user.Courier;
+import com.gourmetGo.service.CourierService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,22 +14,22 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
-    private UserService userService;
+@RequestMapping("/couriers")
+public class CourierController {
+    private CourierService courierService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public CourierController(CourierService courierService) {
+        this.courierService = courierService;
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> registerUser(@Valid @RequestBody UserRequestDto userRequestDto) {
+    public ResponseEntity<Map<String, Object>> registerCourier(@Valid @RequestBody CourierRequestDto courierRequestDto) {
         Map<String, Object> response = new LinkedHashMap<>();
         try {
-            User user = userService.convertDtoToUser(userRequestDto);
-            userService.save(user);
+            Courier courier = courierService.convertDtoToCourier(courierRequestDto);
+            courierService.save(courier);
             Map<String, String> data = new LinkedHashMap<>();
-            data.put("id", user.getId().toString());
+            data.put("id", courier.getId().toString());
             response.put("data", data);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (BadRequestException e) {
@@ -37,9 +37,8 @@ public class UserController {
             return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
     }
-
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.findAll();
+    public List<Courier> getAllCouriers() {
+        return courierService.findAll();
     }
 }
