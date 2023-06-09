@@ -17,22 +17,16 @@ public class Product {
     private String description;
     private Double price;
     private String category;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "restaurant_id", referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "fk_restaurant_product",
-                    foreignKeyDefinition = "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id) ON DELETE CASCADE"))
-    private Restaurant restaurant;
 
     public Product() {
     }
 
-    public Product(UUID id, String name, String description, Double price, String category, Restaurant restaurant) {
+    public Product(UUID id, String name, String description, Double price, String category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
-        this.restaurant = restaurant;
     }
 
     public UUID getId() {
@@ -73,13 +67,5 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
     }
 }

@@ -1,5 +1,7 @@
 package com.gourmetGo.dto.request.user;
 
+import com.gourmetGo.model.Order;
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -27,4 +29,5 @@ public class CourierRequestDto extends UserRequestDto {
     public String getLastname() {
         return lastname;
     }
+
 }

@@ -1,13 +1,13 @@
 package com.gourmetGo.model.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "couriers")
 public class Courier extends User{
     private String firstname;
     private String lastname;
+
 
     public Courier() {}
 

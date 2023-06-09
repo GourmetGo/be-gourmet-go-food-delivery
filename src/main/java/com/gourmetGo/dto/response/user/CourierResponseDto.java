@@ -1,5 +1,7 @@
 package com.gourmetGo.dto.response.user;
 
+import com.gourmetGo.model.Order;
+
 import java.util.UUID;
 
 public class CourierResponseDto extends UserResponseDto {
@@ -19,4 +21,5 @@ public class CourierResponseDto extends UserResponseDto {
     public String getLastname() {
         return lastname;
     }
+
 }

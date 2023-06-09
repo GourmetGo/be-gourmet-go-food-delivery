@@ -1,8 +1,11 @@
 package com.gourmetGo.dto.request.user;
 
+import com.gourmetGo.model.Order;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 public class CustomerRequestDto extends UserRequestDto {
 
@@ -14,13 +17,17 @@ public class CustomerRequestDto extends UserRequestDto {
     private String lastname;
 
     @NotNull
+    @Size(min = 3, message = "Address must be at least 3 characters long")
     private String address;
+    private List<Order> orders;
 
-    public CustomerRequestDto(String username, String password, String firstname, String lastname, String email, String phone, String address) {
+
+    public CustomerRequestDto(String username, String password, String firstname, String lastname, String email, String phone, String address, List<Order> orders) {
         super(username, password, email, phone);
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
+        this.orders = orders;
     }
 
     public String getFirstname() {
@@ -33,5 +40,9 @@ public class CustomerRequestDto extends UserRequestDto {
 
     public String getAddress() {
         return address;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 }

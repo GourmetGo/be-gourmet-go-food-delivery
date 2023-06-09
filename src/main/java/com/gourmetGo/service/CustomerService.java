@@ -38,7 +38,8 @@ public class CustomerService {
                 customer.getLastname(),
                 customer.getEmail(),
                 customer.getPhone(),
-                customer.getAddress()
+                customer.getAddress(),
+                customer.getOrders()
         );
     }
 
@@ -50,7 +51,8 @@ public class CustomerService {
                 customerRequestDto.getLastname(),
                 customerRequestDto.getEmail(),
                 customerRequestDto.getPhone(),
-                customerRequestDto.getAddress()
+                customerRequestDto.getAddress(),
+                customerRequestDto.getOrders()
         );
     }
 }
