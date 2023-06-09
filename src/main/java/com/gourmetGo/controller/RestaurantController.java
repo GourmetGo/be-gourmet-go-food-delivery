@@ -2,6 +2,7 @@ package com.gourmetGo.controller;
 
 import com.gourmetGo.dto.request.user.RestaurantRequestDto;
 import com.gourmetGo.exception.BadRequestException;
+import com.gourmetGo.model.Order;
 import com.gourmetGo.model.user.Restaurant;
 import com.gourmetGo.service.RestaurantService;
 import jakarta.validation.Valid;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/restaurants")
@@ -41,5 +43,15 @@ public class RestaurantController {
     @GetMapping
     public List<Restaurant> getAllRestaurants() {
         return restaurantService.findAll();
+    }
+
+    @GetMapping("/id")
+    public Restaurant getRestaurantById(@RequestParam UUID id) {
+        return restaurantService.getById(id);
+    }
+
+    @GetMapping("/orders")
+    public List<Order> getOrdersById(@RequestParam UUID id) {
+        return restaurantService.getById(id).getOrders();
     }
 }

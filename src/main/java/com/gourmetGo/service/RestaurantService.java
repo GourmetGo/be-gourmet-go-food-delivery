@@ -8,6 +8,7 @@ import com.gourmetGo.repository.user.RestaurantRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class RestaurantService {
@@ -19,6 +20,13 @@ public class RestaurantService {
 
     public List<Restaurant> findAll() {
         return restaurantRepository.findAll();
+    }
+
+    public Restaurant getById(UUID id) {
+        if(restaurantRepository.findById(id).isEmpty()){
+            throw new BadRequestException("Restaurant with id " + id + " not found!");
+        }
+        return restaurantRepository.findById(id).orElse(null);
     }
 
     public void save(Restaurant restaurant) throws BadRequestException {
