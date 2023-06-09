@@ -67,8 +67,9 @@ public class RestaurantController {
     public ResponseEntity<Map<String, Object>> addProduct(@Valid @RequestBody ProductRequestDto productRequestDto) {
         Map<String, Object> response = new LinkedHashMap<>();
         try {
-            Restaurant restaurant = restaurantService.getById(productRequestDto.getRestaurantId());
+//            Restaurant restaurant = restaurantService.getById(productRequestDto.getRestaurantId());
             Product product = productService.addProduct(productRequestDto);
+            productService.save(product);
 //            productService.save(product, restaurant);
             Map<String, String> data = new LinkedHashMap<>();
             data.put("id", product.getId().toString());

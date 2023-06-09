@@ -1,6 +1,7 @@
 package com.gourmetGo.service;
 
 import com.gourmetGo.dto.request.ProductRequestDto;
+import com.gourmetGo.exception.BadRequestException;
 import com.gourmetGo.model.Product;
 import com.gourmetGo.model.user.Restaurant;
 import com.gourmetGo.repository.ProductRepository;
@@ -19,6 +20,10 @@ public class ProductService {
 //    public void save(Product product, Restaurant restaurant) {
 //        productRepository.setProduct(product.getId(), restaurant.getId());
 //    }
+
+    public void save(Product product) {
+        productRepository.save(product);
+    }
 
     public Product addProduct(ProductRequestDto productRequestDto) {
         return new Product(
