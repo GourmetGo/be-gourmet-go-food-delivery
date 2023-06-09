@@ -3,7 +3,9 @@ package com.gourmetGo.service;
 import com.gourmetGo.dto.request.user.RestaurantRequestDto;
 import com.gourmetGo.dto.response.user.RestaurantResponseDto;
 import com.gourmetGo.exception.BadRequestException;
+import com.gourmetGo.model.Product;
 import com.gourmetGo.model.user.Restaurant;
+import com.gourmetGo.repository.ProductRepository;
 import com.gourmetGo.repository.user.RestaurantRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.UUID;
 @Service
 public class RestaurantService {
     private RestaurantRepository restaurantRepository;
+    private ProductRepository productRepository;
+
 
     public RestaurantService(RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;

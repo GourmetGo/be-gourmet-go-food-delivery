@@ -1,7 +1,7 @@
 package com.gourmetGo.model;
 
 import com.gourmetGo.model.user.Courier;
-import com.gourmetGo.model.user.Customer;
+import com.gourmetGo.utils.OrderStatus;
 import jakarta.persistence.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -16,7 +16,7 @@ public class Order {
     @GeneratedValue
     @UuidGenerator
     private UUID id;
-    private String status;
+    private String status = OrderStatus.UNCOMPLETED;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "courier_id", referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "fk_order_courier"))
