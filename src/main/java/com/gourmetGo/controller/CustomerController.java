@@ -26,7 +26,7 @@ public class CustomerController {
     public ResponseEntity<Map<String, Object>> registerCustomer(@Valid @RequestBody CustomerRequestDto customerRequestDto) {
         Map<String, Object> response = new LinkedHashMap<>();
         try {
-            Customer customer = customerService.convertDtoToCustomer(customerRequestDto);
+            Customer customer = customerService.registerCustomer(customerRequestDto);
             customerService.save(customer);
             Map<String, String> data = new LinkedHashMap<>();
             data.put("id", customer.getId().toString());

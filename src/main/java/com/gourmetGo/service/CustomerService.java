@@ -43,7 +43,7 @@ public class CustomerService {
         );
     }
 
-    public Customer convertDtoToCustomer(CustomerRequestDto customerRequestDto) {
+    public Customer registerCustomer(CustomerRequestDto customerRequestDto) {
         return new Customer(
                 customerRequestDto.getUsername(),
                 customerRequestDto.getPassword(),
@@ -52,7 +52,7 @@ public class CustomerService {
                 customerRequestDto.getEmail(),
                 customerRequestDto.getPhone(),
                 customerRequestDto.getAddress(),
-                customerRequestDto.getOrders()
+                null
         );
     }
 }

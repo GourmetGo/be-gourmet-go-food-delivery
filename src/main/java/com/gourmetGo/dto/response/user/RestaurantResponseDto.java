@@ -2,8 +2,6 @@ package com.gourmetGo.dto.response.user;
 
 import com.gourmetGo.model.Order;
 import com.gourmetGo.model.Product;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 import java.util.List;
 import java.util.UUID;

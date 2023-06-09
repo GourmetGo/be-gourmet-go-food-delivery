@@ -2,7 +2,6 @@ package com.gourmetGo.controller;
 
 import com.gourmetGo.dto.request.user.RestaurantRequestDto;
 import com.gourmetGo.exception.BadRequestException;
-import com.gourmetGo.model.user.Customer;
 import com.gourmetGo.model.user.Restaurant;
 import com.gourmetGo.service.RestaurantService;
 import jakarta.validation.Valid;

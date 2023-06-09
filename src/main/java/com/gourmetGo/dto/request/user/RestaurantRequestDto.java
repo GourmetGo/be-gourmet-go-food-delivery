@@ -1,11 +1,8 @@
 package com.gourmetGo.dto.request.user;
 
-import com.gourmetGo.model.Order;
-import com.gourmetGo.model.Product;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import java.util.List;
 
 public class RestaurantRequestDto extends UserRequestDto{
     @NotBlank(message = "Name is required.")
